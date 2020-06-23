@@ -12,6 +12,11 @@ external forEach : ('a => unit, stream('a)) => Js.Promise.t(unit) = "";
 external reduce : (('accum, 'a) => 'b, 'b, stream('a)) => Js.Promise.t('b) =
   "";
 
+// Create a feedback loop that emits one value and feeds back another to be used in the next iteration.
+[@bs.module "most"]
+external loop : (('accum, 'b) => Js.t, 'accum) => stream('c) = ""
+
+
 /* Start consuming events from stream.
    This can be useful in some cases where you don't want or need to process the terminal events
    --e.g. when all processing has been done via upstream side-effects.
