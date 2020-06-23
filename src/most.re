@@ -14,7 +14,7 @@ external reduce : (('accum, 'a) => 'b, 'b, stream('a)) => Js.Promise.t('b) =
 
 // Create a feedback loop that emits one value and feeds back another to be used in the next iteration.
 [@bs.module "most"]
-external loop : (('accum, 'b) => Js.t, 'accum) => stream('c) = ""
+external loop : (('accum, 'a) => 'b, 'accum, stream('a)) => stream('b) = "";
 
 
 /* Start consuming events from stream.
